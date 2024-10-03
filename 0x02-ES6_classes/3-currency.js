@@ -28,6 +28,7 @@ export default class Currency {
   }
 
   // Validation method
+  // eslint-disable-next-line class-methods-use-this
   _validateString(value, attributeName) {
     if (typeof value !== 'string') {
       throw new TypeError(`${attributeName} must be a string`);
@@ -35,4 +36,3 @@ export default class Currency {
     return value;
   }
 }
-
