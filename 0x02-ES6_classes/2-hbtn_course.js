@@ -33,6 +33,7 @@ export default class HolbertonCourse {
   }
 
   // Validation methods
+  // eslint-disable-next-line class-methods-use-this
   _validateString(value, attributeName) {
     if (typeof value !== 'string') {
       throw new TypeError(`${attributeName} must be a string`);
@@ -40,6 +41,7 @@ export default class HolbertonCourse {
     return value;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _validateNumber(value, attributeName) {
     if (typeof value !== 'number') {
       throw new TypeError(`${attributeName} must be a number`);
@@ -47,11 +49,11 @@ export default class HolbertonCourse {
     return value;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _validateArray(value, attributeName) {
-    if (!Array.isArray(value) || !value.every(item => typeof item === 'string')) {
+    if (!Array.isArray(value) || !value.every((item) => typeof item === 'string')) {
       throw new TypeError(`${attributeName} must be an array of strings`);
     }
     return value;
   }
 }
-
