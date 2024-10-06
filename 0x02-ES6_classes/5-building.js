@@ -1,9 +1,13 @@
-class Building {
+export default class Building {
   constructor(sqft) {
-    if (this.constructor === Building) {
-      throw new Error('Building is an abstract class and cannot be instantiated directly.');
+    this.sqft = sqft;
+    if (this.constructor !== Building) {
+      if (typeof this.evacuationWarningMessage !== 'function') {
+        throw new Error(
+          'Class extending Building must override evacuationWarningMessage',
+        );
+      }
     }
-    this._sqft = sqft;
   }
 
   get sqft() {
@@ -13,21 +17,4 @@ class Building {
   set sqft(value) {
     this._sqft = value;
   }
-
-  // eslint-disable-next-line class-methods-use-this
-  evacuationWarningMessage() {
-    throw new Error('Class extending Building must override evacuationWarningMessage');
-  }
 }
-
-// Example of a subclass that extends Building
-class OfficeBuilding extends Building {
-  evacuationWarningMessage() {
-    return 'Evacuate the office building immediately!';
-  }
-}
-
-// Usage
-const office = new OfficeBuilding(5000);
-console.log(office.sqft); // 5000
-console.log(office.evacuationWarningMessage()); // "Evacuate the office building immediately!"
