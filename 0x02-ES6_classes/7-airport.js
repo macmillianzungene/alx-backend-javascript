@@ -1,24 +1,26 @@
-class Airport {
-    constructor(name, code) {
-        this._name = name;
-        this._code = code;
-    }
+export default class Airport {
+  constructor(name, code) {
+    this.name = name;
+    this.code = code;
+  }
 
-    get name() {
-        return this._name;
-    }
+  get name() {
+    return this._name;
+  }
 
-    get code() {
-        return this._code;
-    }
+  set name(value) {
+    this._name = value;
+  }
 
-    toString() {
-        return this._code;
-    }
+  get code() {
+    return this._code;
+  }
+
+  set code(value) {
+    this._code = value;
+  }
+
+  get [Symbol.toStringTag]() {
+    return this._code;
+  }
 }
-
-// Example usage
-const jfk = new Airport("John F. Kennedy International Airport", "JFK");
-console.log(jfk.name); // "John F. Kennedy International Airport"
-console.log(jfk.code); // "JFK"
-console.log(jfk.toString()); // "JFK"

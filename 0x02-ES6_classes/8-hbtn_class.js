@@ -1,26 +1,32 @@
-class HolbertonClass {
-    constructor(size, location) {
-        this._size = size;
-        this._location = location;
-    }
+export default class HolbertonClass {
+  constructor(size, location) {
+    this.size = size;
+    this.location = location;
+  }
 
-    get size() {
-        return this._size;
-    }
+  get size() {
+    return this._size;
+  }
 
-    get location() {
-        return this._location;
-    }
+  set size(value) {
+    this._size = value;
+  }
 
-    // Overriding the valueOf method to return the size when cast to a number
-    valueOf() {
-        return this._size;
+  get location() {
+    return this._location;
+  }
+
+  set location(value) {
+    this._location = value;
+  }
+
+  [Symbol.toPrimitive](hint) {
+    if (hint === 'number') {
+      return this.size;
     }
+    if (hint === 'string') {
+      return this.location;
+    }
+    return this;
+  }
 }
-
-// Example usage
-const holberton = new HolbertonClass(100, "San Francisco");
-console.log(holberton.size); // 100
-console.log(holberton.location); // "San Francisco"
-console.log(Number(holberton)); // 100
-
